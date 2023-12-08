@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>PLUGIN &#8212; CoGEOS 0.1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=4f649999" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=039e1c02" />
+    <script src="../_static/documentation_options.js?v=2709fde1"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="plugin">
+<h1>PLUGIN<a class="headerlink" href="#plugin" title="Link to this heading">¶</a></h1>
+</section>
+<section id="installation">
+<h1>Installation<a class="headerlink" href="#installation" title="Link to this heading">¶</a></h1>
+<section id="package-installation">
+<h2>Package Installation<a class="headerlink" href="#package-installation" title="Link to this heading">¶</a></h2>
+<p>The CoGEOS Shoreline Extraction plugin works with external python libraries when handling most of its analysis.
+Therefore, before the plugn is installed, you would have to install all external libraries with the following procedure.</p>
+<ol class="arabic simple">
+<li><p>Open the QGIS python console.</p></li>
+<li><p>Click on show editor <a class="reference internal" href="../_images/showeditor.png"><img alt="editor" src="../_images/showeditor.png" style="width: 165.2px; height: 27.299999999999997px;" /></a>.</p></li>
+<li><p>Paste the following code into the untitled file.</p></li>
+<li><p>Click run.</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">subprocess</span>
+
+<span class="n">packages</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;earthengine-api&#39;</span><span class="p">,</span><span class="s1">&#39;folium&#39;</span><span class="p">,</span> <span class="s1">&#39;rasterio&#39;</span><span class="p">,</span> <span class="s1">&#39;rtree&#39;</span><span class="p">,</span> <span class="s1">&#39;pandas&#39;</span><span class="p">,</span> <span class="s1">&#39;geopandas&#39;</span><span class="p">,</span> <span class="s1">&#39;pyCRS&#39;</span><span class="p">,</span> <span class="s1">&#39;geemap&#39;</span><span class="p">,</span> <span class="s1">&#39;mapclassify&#39;</span><span class="p">,</span> <span class="s1">&#39;contextily&#39;</span><span class="p">,</span> <span class="s1">&#39;matplotlib_scalebar&#39;</span><span class="p">,</span> <span class="s1">&#39;opencv-python&#39;</span><span class="p">,</span> <span class="s1">&#39;natsort&#39;</span><span class="p">,</span> <span class="s1">&#39;scikit-learn&#39;</span><span class="p">]</span>
+<span class="k">try</span><span class="p">:</span> 
+    <span class="k">for</span> <span class="n">package</span> <span class="ow">in</span> <span class="n">packages</span><span class="p">:</span>
+        <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">([</span><span class="s2">&quot;pip&quot;</span><span class="p">,</span><span class="s2">&quot;install&quot;</span><span class="p">,</span> <span class="n">package</span><span class="p">])</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">package</span><span class="si">}</span><span class="s2"> installed successfully&quot;</span><span class="p">)</span>
+
+<span class="k">except</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">CalledProcessError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error installing the dependencies: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="install-the-plugin">
+<h2>Install the Plugin<a class="headerlink" href="#install-the-plugin" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p>To install the plugin, follow the following procedure.</p>
+<ol class="arabic simple">
+<li><p>Download the plugin zip.</p></li>
+<li><p>Open the QGIS plugin manager</p></li>
+<li><p>Click <code class="docutils literal notranslate"><span class="pre">install</span> <span class="pre">from</span> <span class="pre">ZIP</span></code>.</p></li>
+</ol>
+<figure class="align-center" id="id2">
+<img alt="Install from ZIP" src="../_images/install.png" />
+<figcaption>
+<p><span class="caption-text"><em>Install plugin from the zip</em></span><a class="headerlink" href="#id2" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+<ol class="arabic simple" start="4">
+<li><p>Browse to the download directory.</p></li>
+<li><p>Install the plugin.</p></li>
+</ol>
+</div></blockquote>
+</section>
+</section>
+<section id="shoreline-extraction">
+<h1>Shoreline Extraction<a class="headerlink" href="#shoreline-extraction" title="Link to this heading">¶</a></h1>
+<blockquote>
+<div><p>The development of this plugin has been specifically designed to extract shorelines utilizing a flexible approach, making use of both radar and optical imagery sources. The selection of which type of imagery to use is contingent upon the particular focus and requirements of the user.</p>
+</div></blockquote>
+<section id="extraction-with-optical-imagery">
+<h2>Extraction with Optical Imagery<a class="headerlink" href="#extraction-with-optical-imagery" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p>Shoreline Extraction using optical imagery is configured to follow the following steps.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference internal" href="#downloadimagery"><span class="std std-ref">Download multiband Sentinel 2 Imagery</span></a></p></li>
+<li><p>Load the Image onto QGIS</p></li>
+<li><p>On the plugin select <strong>Extract Shoreline</strong></p></li>
+<li><p>Run the plugin</p></li>
+</ul>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="download-optical-imagery">
+<span id="downloadimagery"></span><h2>Download Optical Imagery<a class="headerlink" href="#download-optical-imagery" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p>Multiband Sentinel 2 Images at a resolution of 10m are downloaded with the help of the <em>earthengine-api</em>. The result is an image with <strong>4 bands</strong>, that is, <em>Red,Green, Blue and NIR</em>. For shoreline extraction, the NIR band is of importance. The Red, Green and Blue band can be used to create a basemap for confirmation.</p>
+<figure class="align-center" id="id3">
+<img alt="Download Imagery on the plugin" src="../_images/Download.png" />
+<figcaption>
+<p><span class="caption-text"><em>Figure 1: Image Downloader Page</em></span><a class="headerlink" href="#id3" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+<p>The <em>Image Downloader</em> takes 4 parameters. That is :-</p>
+<ol class="arabic simple">
+<li><p><strong>Bound</strong> - This is a vector representation of you area of interest. The file format is limited to Esri Shapefiles.</p></li>
+<li><p><strong>Start Date</strong> - This is the beginning of the analysis period.</p></li>
+<li><p><strong>End Date</strong> - This is the end of the analysis period</p></li>
+<li><p><strong>Output Directory</strong> - This is the folder in which the image will be stored.</p></li>
+</ol>
+<div class="admonition-note admonition">
+<p class="admonition-title">Note!</p>
+<ul class="simple">
+<li><p>The image being downloaded is <strong>Sentinel 2A</strong>. This means that the analysis period is limited to <strong>2015 - present</strong>.</p></li>
+<li><p>The plugin may create additional directories in your output folder. You can delete them after the image has been downloaded.</p></li>
+</ul>
+</div>
+</div></blockquote>
+</section>
+<section id="shorelineextractionoptical">
+<span id="id1"></span><h2>Shoreline Extraction<a class="headerlink" href="#shorelineextractionoptical" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p>Shoreline extraction with optical imagery uses the Near Infrared band to delineate land and water masses. It takes a singleband or multiband raster image from which the
+Near Infrared band can be selected for use in the analysis. The output is a <strong>GeoJSON</strong> file with a polygon showing the land mass including the shoreline. From this, the shoreline can be extracted.</p>
+<figure class="align-center" id="id4">
+<img alt="Shoreline Extraction with Optical Imagery" src="../_images/Optical.png" />
+<figcaption>
+<p><span class="caption-text"><em>Figure 2: Shoreline Extraction with Optical Imagery</em></span><a class="headerlink" href="#id4" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+<p>Automatic Shoreline Extraction with optical imagery takes 3 parameters. That is:</p>
+<ol class="arabic simple">
+<li><p><strong>Multiband Raster</strong> - This is the image that was initially downloaded from the image downloader. For purposes of consistency, please use the downloaded image.</p></li>
+<li><p><strong>NIR Band</strong> - The plugin counts the number of bands in the multiband raster image. You will be required to select the band number that represents the NIR band.</p></li>
+<li><p><strong>Output Foder</strong> - This is the directory where you want to save the extracted shoreline.</p></li>
+</ol>
+</div></blockquote>
+</section>
+<section id="extraction-with-sar-imagery">
+<span id="sarextraction"></span><h2>Extraction with SAR Imagery<a class="headerlink" href="#extraction-with-sar-imagery" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p>This method of shoreline extraction uses <strong>Synthetic Aperture Radar</strong> imagery from <strong>Sentinel 1</strong> to delineate water masses. The result is a <strong>GeoJSON</strong> file showing the edges from which shorelines can be estimated.
+This tehnique uses the <strong>earthengine-api</strong> meaning the image doesn’t necessarily have to be within your local directory. You only have to provide a <strong>gridded</strong> shapefile showing your Area of Interest (AOI).</p>
+<figure class="align-center" id="id5">
+<img alt="Shoreline Extraction with SAR imagery" src="../_images/SAR.png" />
+<figcaption>
+<p><span class="caption-text"><em>Figure 3: Shoreline Extraction with Optical Imagery</em></span><a class="headerlink" href="#id5" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+<p>This method of shoreline extraction takes 4 parameters. That is:</p>
+<ol class="arabic simple">
+<li><p><strong>Bound</strong> - This is a <strong>gridded</strong> shapefile showing your area of interest.</p></li>
+<li><p><strong>Start Date</strong> - This is the beginning of your analysis period.</p></li>
+<li><p><strong>End Date</strong> - This is the end if your analysis period.</p></li>
+<li><p><strong>Output Directory</strong> - This is the folder that will hold the output results of your work.</p></li>
+</ol>
+<div class="admonition-note admonition">
+<p class="admonition-title">Note!</p>
+<p>The bound in should be <strong>gridded</strong> to reduce download and processing time.</p>
+</div>
+</div></blockquote>
+</section>
+</section>
+<section id="shoreline-change-computation">
+<span id="shorelinechange"></span><h1>Shoreline Change Computation<a class="headerlink" href="#shoreline-change-computation" title="Link to this heading">¶</a></h1>
+<blockquote>
+<div><p>Once a user has obtained the shorelines, changes can be computed regardless of the technique chosen.
+This section takes a baseline and comparison shoreline together with their respective years from which the rates of change can be computed.</p>
+<figure class="align-center" id="id6">
+<img alt="Shoreline Change Computation" src="../_images/SAR.png" />
+<figcaption>
+<p><span class="caption-text"><em>Figure 5: Shoreline change computation</em></span><a class="headerlink" href="#id6" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+<p>Shoreline change takes five parameters. That is:</p>
+<ol class="arabic simple">
+<li><p><strong>Baseline Shoreline</strong> - This is the shoreline at the beginning of you analysis period.</p></li>
+<li><p><strong>Baseline Year</strong> - This is the year during which the baseline shoreline was generated.</p></li>
+<li><p><strong>Comparison Shoreline</strong>- This is the shoreline to be used for comparison.</p></li>
+<li><p><strong>Comparison year</strong> - This is the year during which the comparison shoreline was generated.</p></li>
+<li><p><strong>Output Directory</strong>- This is the folder within which the shoreline change outputs will be stored.</p></li>
+</ol>
+<p>Shoreline change produces 4 files:</p>
+<ul class="simple">
+<li><p><strong>Retreat</strong> - This is poygon data showing the areas where the shoreline retreated.</p></li>
+<li><p><strong>Retreat Points</strong> - This is point data highlighting the specific points where the shoreline retreated. It also contains attribute data <code class="docutils literal notranslate"><span class="pre">change_m</span></code> showing the amount of retreat.</p></li>
+<li><p><strong>Growth</strong> - This is polygon data showing the areas where the shoreline grew.</p></li>
+<li><p><strong>Growth Points</strong> - This is point data highlighting the specific points where the shoreline grew.It also contains attribute data <code class="docutils literal notranslate"><span class="pre">change_m</span></code> showing the amount of growth.</p></li>
+<li><p><strong>Shoreline Change</strong> - This is a combination of <code class="docutils literal notranslate"><span class="pre">retreat_points</span></code> and <code class="docutils literal notranslate"><span class="pre">growth_points</span></code>. This quantifies the <code class="docutils literal notranslate"><span class="pre">total</span> <span class="pre">shoreline</span> <span class="pre">change</span></code> and <code class="docutils literal notranslate"><span class="pre">change</span> <span class="pre">rates</span> <span class="pre">per</span> <span class="pre">year</span></code>. Negative changes indicate retreat while positie changes indicate growth.</p></li>
+</ul>
+</div></blockquote>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">CoGEOS</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2023, LocateIT Ltd.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 7.2.6</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
+      
+      |
+      <a href="../_sources/Introduction/plugin.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
